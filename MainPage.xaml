@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppJuego.MainPage"
+             Title="Juego">
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <!-- Título y turno del jugador -->
+            <Label Text="Tres en Raya" FontSize="Large" HorizontalOptions="Center" Margin="0,0,0,10"/>
+            <Label x:Name="playerTurnLabel" Text="Turno: jugador 1" HorizontalOptions="Center" Margin="0,0,0,20"/>
+
+            <!-- Grid para el tablero de juego -->
+            <Grid x:Name="gameGrid" RowSpacing="10" ColumnSpacing="10">
+                <!-- Define las filas y columnas -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <!-- Botón de inicio/reset -->
+            <Button x:Name="startResetButton" Text="Inicio/Reset" Clicked="OnStartResetClicked" Margin="0,20,0,40"/>
+
+            <!-- Información de los jugadores -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Columna para el Jugador 1 -->
+                <StackLayout Grid.Column="0">
+                    <Label Text="Historial Jugador 1:X" />
+                    <ListView x:Name="listaJuegosGanadosJugador1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding GameDateTime}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!-- Columna para el Jugador 2 -->
+                <StackLayout Grid.Column="1">
+                    <Label Text="Historial Jugador 2:O" />
+                    <ListView x:Name="listaJuegosGanadosJugador2">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding GameDateTime}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
